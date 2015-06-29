@@ -23,6 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "colorize"
   spec.add_dependency "terminal-table"
   spec.add_dependency "activesupport"
+  spec.add_dependency "nokogiri"
   spec.add_dependency "thor"
   spec.add_dependency "i18n"
   spec.add_dependency "hashie", ">= 2.0"

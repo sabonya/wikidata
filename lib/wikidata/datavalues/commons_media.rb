@@ -10,11 +10,11 @@ module Wikidata
         query = {image: data_hash.imagename, thumbwidth: 150}
         puts "Getting: #{query}".yellow if Wikidata.verbose?
         r = Faraday.get('http://tools.wmflabs.org/magnus-toolserver/commonsapi.php', query)
-        @data_hash = Hashie::Mash.new(r.body['response'].merge({imagename: data_hash.imagename}))
+        Nokogiri::XML(r.body)
       end
 
       def url
-        resolved.file.urls.file
+        resolved.search('file')[1].try(:content)
       end
 
     end
