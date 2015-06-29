@@ -60,6 +60,12 @@ module Wikidata
       website_claims.map(&:mainsnak).map(&:value).map(&:item_id)
     end
 
+    def mid
+      website_claims = claims_for_property_id("P646")
+      return [] unless website_claims.present?
+      website_claims.map(&:mainsnak).map(&:value).map(&:string).try(:first)
+    end
+
     def mothers
       entities_for_property_id :mother
     end
